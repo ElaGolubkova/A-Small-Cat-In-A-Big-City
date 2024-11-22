@@ -1,0 +1,66 @@
+:: StoryTitle
+A Small Cat In A Big City
+
+
+:: StoryData
+{
+  "ifid": "DBB265C7-AD2E-4A5C-800D-5BAAC17B0AAC",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "Start",
+  "zoom": 1
+}
+
+
+:: Investigate {"position":"1475,900","size":"100,100"}
+You come closer and look at what is making the weird sound. 
+When you come very close something [[jumps at you->Timeout1]]
+
+
+:: Jump back down {"position":"1350,900","size":"100,100"}
+You decide it's not worth the risk. You decide to go down the street to look for some food.
+
+
+:: Start {"position":"1225,525","size":"100,100"}
+You wake up from the sound of rain... You can hear it drumming right above you.
+you open your eyes and see that you are completely dry... you look around and see that you are laying in a small delivery box.
+
+Unplesent [[memories]] flood your mind. 
+It's raining pretty bad so you need to [[wait it out->Wait Out]], you dont want to get your fur wet.
+
+
+:: Timeout1 {"position":"1425,500","size":"100,100"}
+You fail to get away and get killed by a rat that jumps right at you from the trashcan. 
+
+[[Restart->Start]]
+
+
+:: Wait Out {"position":"1350,650","size":"100,100"}
+After a few hours the rain finally stopped. You hear your stomach growl, it's time to go find something to eat. This is the first time you're looking for food alone and in a new place. You look around and see a trahshcan, you come [[closer->trashcan]].
+
+
+:: memories {"position":"1225,650","size":"100,100"}
+You think about the events that occured in the past 24 hours and realize that this whole conflict started long before then... it started when you were born. In the past few generations of your family there were no black cats born but even when they were they weren't as small and weak as you. Tears creep up when you remember about the reason they threw you out and you don't want to think about it. You shake your head and it feels like the bad memories fly away with the tear. there is no reason to dwell on the past, you need to focus on the present and for that you need to [[wait out->Wait Out]] the rain before doing anything.
+
+
+:: trashcan {"position":"1350,775","size":"100,100"}
+You come closer to it, and jump inside. 
+
+Once you are in it you hear a wierd rustling sound!!!
+
+[[Jump back down]]
+
+[[Investigate]]
+(set: $counter to 3)
+
+Decide within |amount>[$counter] seconds!
+
+(live: 1s)[(set: $counter to it -1)
+
+(if: $counter is 0)[(go-to: "Timeout1")]
+
+(replace: ?amount)[$counter]]
+
+
+:: StoryStylesheet [stylesheet]
+/*tw-sidebar {visibility: hidden}*/
